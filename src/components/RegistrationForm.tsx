@@ -65,57 +65,64 @@ const RegistrationForm: React.FC = () => {
     return (
         <>
             <LoadingBar isLoading={barLoading} />
-            <div className="form-container">
-                <h2 className="title">Đăng ký tài khoản</h2>
+            <div className="container mt-5">
+                <div className="row justify-content-center">
+                    <div className="col-12 col-sm-10 col-md-8 col-lg-6">
+                        <div className="form-container ">
+                            <h2 className="title">Đăng ký tài khoản</h2>
 
-                <ValidatedInput
-                    label="Tên đăng nhập"
-                    type="text"
-                    placeholder="Nhập tên đăng nhập"
-                    validationRules={usernameRules}
-                    value={formData.username}
-                    onChange={updateField('username')}
-                    forceValidate={submitAttempted}
-                />
+                            <ValidatedInput
+                                label="Tên đăng nhập"
+                                type="text"
+                                placeholder="Nhập tên đăng nhập"
+                                validationRules={usernameRules}
+                                value={formData.username}
+                                onChange={updateField('username')}
+                                forceValidate={submitAttempted}
+                            />
 
-                <ValidatedInput
-                    label="Email"
-                    type="email"
-                    placeholder="Nhập email"
-                    validationRules={emailRules}
-                    value={formData.email}
-                    onChange={updateField('email')}
-                    forceValidate={submitAttempted}
-                />
+                            <ValidatedInput
+                                label="Email"
+                                type="email"
+                                placeholder="Nhập email"
+                                validationRules={emailRules}
+                                value={formData.email}
+                                onChange={updateField('email')}
+                                forceValidate={submitAttempted}
+                            />
 
-                <ValidatedInput
-                    label="Mật khẩu"
-                    type="password"
-                    placeholder="Nhập mật khẩu"
-                    validationRules={passwordRules}
-                    value={formData.password}
-                    onChange={updateField('password')}
-                    forceValidate={submitAttempted}
-                />
+                            <ValidatedInput
+                                label="Mật khẩu"
+                                type="password"
+                                placeholder="Nhập mật khẩu"
+                                validationRules={passwordRules}
+                                value={formData.password}
+                                onChange={updateField('password')}
+                                forceValidate={submitAttempted}
+                            />
 
-                <ValidatedInput
-                    label="Xác nhận mật khẩu"
-                    type="password"
-                    placeholder="Nhập lại mật khẩu"
-                    validationRules={confirmPasswordRules}
-                    value={formData.confirmPassword}
-                    onChange={updateField('confirmPassword')}
-                    forceValidate={submitAttempted}
-                />
+                            <ValidatedInput
+                                label="Xác nhận mật khẩu"
+                                type="password"
+                                placeholder="Nhập lại mật khẩu"
+                                validationRules={confirmPasswordRules}
+                                value={formData.confirmPassword}
+                                onChange={updateField('confirmPassword')}
+                                forceValidate={submitAttempted}
+                            />
 
-                <ButtonWithLoading
-                    className={`button`}
-                    loading={loading}
-                    onClick={handleSubmit}
-                >
-                    Đăng ký
-                </ButtonWithLoading>
+                            <ButtonWithLoading
+                                className={`button`}
+                                loading={loading}
+                                onClick={handleSubmit}
+                            >
+                                Đăng ký
+                            </ButtonWithLoading>
+                        </div>
+                    </div>
+                </div>
             </div>
+
         </>
     );
 };

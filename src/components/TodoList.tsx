@@ -1,7 +1,8 @@
+// --- TodoList.tsx ---
 import React, { useState } from 'react';
 import TodoItem, { Todo } from './TodoItem';
 import '../styles/TodoList.css';
-import {ButtonWithLoading, LoadingBar} from "./loading";
+import { ButtonWithLoading, LoadingBar } from "./loading";
 
 const TodoList: React.FC = () => {
     const [todos, setTodos] = useState<Todo[]>([]);
@@ -25,7 +26,6 @@ const TodoList: React.FC = () => {
                 setTodos(prev => [...prev, newTodo]);
                 setInputValue('');
             }, 2000);
-
         }
     };
 
@@ -54,47 +54,50 @@ const TodoList: React.FC = () => {
     return (
         <>
             <LoadingBar isLoading={barLoading} />
-            <div className="todo-container">
-                <h2 className="title">Todo List</h2>
+            <div className="container mt-5">
+                <div className="row justify-content-center">
+                    <div className="col-12 col-md-8 col-lg-6">
+                        <div className="todo-container">
+                            <h2 className="title">Todo List</h2>
 
-                {/* Add new todo */}
-                <div className="add-todo-container">
-                    <input
-                        type="text"
-                        value={inputValue}
-                        onChange={(e: React.ChangeEvent<HTMLInputElement>) => setInputValue(e.target.value)}
-                        onKeyPress={handleKeyPress}
-                        placeholder="Thêm công việc mới..."
-                        className="add-todo-input"
-                    />
-                    <ButtonWithLoading
-                        onClick={addTodo}
-                        loading={loading}
-                        className="add-button"
-                    >
-                        Thêm
-                    </ButtonWithLoading>
-                </div>
+                            <div className="add-todo-container d-flex gap-2 mb-3">
+                                <input
+                                    type="text"
+                                    value={inputValue}
+                                    onChange={(e: React.ChangeEvent<HTMLInputElement>) => setInputValue(e.target.value)}
+                                    onKeyPress={handleKeyPress}
+                                    placeholder="Thêm công việc mới..."
+                                    className="form-control"
+                                />
+                                <ButtonWithLoading
+                                    onClick={addTodo}
+                                    loading={loading}
+                                    className="btn btn-primary"
+                                >
+                                    Thêm
+                                </ButtonWithLoading>
+                            </div>
 
-                {/* Todo list */}
-                <div className="todo-list">
-                    {todos.length === 0 ? (
-                        <p className="empty-state">Chưa có công việc nào</p>
-                    ) : (
-                        todos.map((todo: Todo) => (
-                            <TodoItem
-                                key={todo.id}
-                                todo={todo}
-                                onToggleComplete={toggleComplete}
-                                onDelete={deleteTodo}
-                                onEdit={editTodo}
-                            />
-                        ))
-                    )}
+                            <div className="todo-list">
+                                {todos.length === 0 ? (
+                                    <p className="text-muted">Chưa có công việc nào</p>
+                                ) : (
+                                    todos.map((todo: Todo) => (
+                                        <TodoItem
+                                            key={todo.id}
+                                            todo={todo}
+                                            onToggleComplete={toggleComplete}
+                                            onDelete={deleteTodo}
+                                            onEdit={editTodo}
+                                        />
+                                    ))
+                                )}
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </>
-
     );
 };
 
